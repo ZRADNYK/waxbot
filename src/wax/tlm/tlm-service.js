@@ -14,7 +14,7 @@ export function pushNewAccount(account) {
 export function writeAccountsToFile() {
     let fileName = waxBotConfig.inputFile.split(".")[0] + "-accounts.json";
     const filePath = path.resolve(fileName);
-    const jsonData = JSON.stringify(accounts, null, 2);
+    const jsonData = JSON.stringify(accounts, null, 1);
 
     try {
         fs.writeFileSync(filePath, jsonData, 'utf8');
