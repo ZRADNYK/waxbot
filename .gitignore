@@ -1,0 +1,8 @@
+node_modules
+.vscode
+
+# Babel output folder
+babel-output
+# electron dist folder
+dist
+/.idea/
