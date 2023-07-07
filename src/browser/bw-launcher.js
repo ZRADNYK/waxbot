@@ -1,6 +1,5 @@
 import {loginToCloudWallet, loginToWax} from "../wax/wax-service";
 import {logger} from "../lib/puppeteer-utils";
-import {startBlocks} from "../bloks/bloks-service";
 import {alcorUrl} from "./bw-constants";
 import {waxBotConfig} from "../config/config-service";
 
@@ -13,9 +12,6 @@ export async function startBrowser(browser, user) {
     }
     if(waxBotConfig.useCloudWallet === "true") {
         await loginToCloudWallet(browser, user);
-    }
-    if(waxBotConfig.useBloks === "true" && (waxBotConfig.useWax === "true" || waxBotConfig.useCloudWallet === "true")) {
-        await startBlocks(browser, user, waxBotConfig);
     }
 }
 

@@ -2,7 +2,7 @@
   "name": "waxbot",
   "version": "1.1",
   "description": "Bot for WAX commands automation",
-  "main": "src/lib/electron_main.js",
+  "main": "electron_main.js",
   "dependencies": {
     "chromium": "^3.0.3",
     "ghost-cursor": "^1.1.8",
@@ -22,7 +22,7 @@
   },
   "scripts": {
     "babel_build": "babel --source-maps --out-dir=babel-output src",
-    "copy-babel-output": "node src/lib/import-babel-scripts.js",
+    "copy-babel-output": "node import-babel-scripts.js",
     "start": "npm run babel_build & npm run copy-babel-output & electron .",
     "start_dev": "babel-node --presets env,stage-3 src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
