@@ -2,8 +2,6 @@
     "inputFile": "test.txt",
     "useAlcor": "false",
     "useBloks": "false",
-    "useWax": "false",
     "useCloudWallet": "true",
-    "landId": "12345",
     "updateTokens": "true"
 }

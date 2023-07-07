@@ -9,11 +9,11 @@ export class Logger {
     }
 
     logInfo(msg) {
-        this.log(msg);
+        this.log(new Date().toUTCString() + ' ' + msg);
     }
 
     logError(msg) {
-        this.log(msg, 'color: red;')
+        this.log(new Date().toUTCString() + ' - ' +msg, 'color: red;')
     }
 
     log(msg, style) {

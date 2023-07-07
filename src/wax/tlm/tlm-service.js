@@ -25,6 +25,5 @@ export function writeAccountsToFile() {
 }
 
 export function areAccountsUpdated(usersNumber) {
-    // logger.logInfo("Users number: " + usersNumber + ", accounts updated: " + accounts.length);
     return accounts.length === usersNumber && accounts.filter(a => a.waxToken !== undefined).length === accounts.length;
 }

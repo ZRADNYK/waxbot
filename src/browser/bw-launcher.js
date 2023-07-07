@@ -9,7 +9,7 @@ export async function startBrowser(browser, user) {
         await loginToWax(browser, user);
     }
     if(waxBotConfig.useAlcor === "true") {
-        await startAlcor(browser, user);
+        // await startAlcor(browser, user);
     }
     if(waxBotConfig.useCloudWallet === "true") {
         await loginToCloudWallet(browser, user);

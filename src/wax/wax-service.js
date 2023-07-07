@@ -61,19 +61,17 @@ export async function loginToCloudWallet(browser, user) {
     });
     await write(twoFaSelector, secretKey, cursor, cloudWalletPage);
     await (await cloudWalletPage.$(cloudWalletContinueButtonSelector)).click();
-    // const twoFaError = await Promise.race([
-    //     new Promise(resolve => setTimeout(() => resolve(), 500)),
-    //     cloudWalletPage.waitForSelector('#selector', { visible: true })
-    // ]);
-    // if (twoFaError) {
-    //     logger.logInfo(user.email + " - 2FA failed, retrying...");
-    //     await clear(twoFaSelector, cursor, cloudWalletPage);
-    //     secretKey = speakeasy.totp({
-    //         secret: user.secretKey,
-    //         encoding: 'base32'
-    //     });
-    //     await write(twoFaSelector, secretKey, cursor, cloudWalletPage);
-    // }
+    await wait(2000);
+    if(await cloudWalletPage.$('#root > div > div.diag-container > div.diag-container-div-1 > div > div > div.p-1.error-portion > div > ul > li') != null) {
+        logger.logInfo(user.email + " - 2FA failed, retrying...");
+        await clear(twoFaSelector, cursor, cloudWalletPage);
+        secretKey = speakeasy.totp({
+            secret: user.secretKey,
+            encoding: 'base32'
+        });
+        await write(twoFaSelector, secretKey, cursor, cloudWalletPage);
+        await (await cloudWalletPage.$(cloudWalletContinueButtonSelector)).click();
+    }
 
     logger.logInfo(user.email + ' - logged in');
     if(waxBotConfig.updateTokens === "true") {
