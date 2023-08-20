@@ -6,9 +6,11 @@ import {pushNewAccount} from "./tlm/tlm-service";
 import {waxBotConfig} from "../config/config-service";
 import {
     accountNameSelector,
-    cloudWalletContinueButtonSelector, cloudWalletPasswordSelector,
+    cloudWalletContinueButtonSelector,
+    cloudWalletPasswordSelector,
     cloudWalletSignInSelector,
-    cloudWalletUrl, cloudWalletUsernameSelector,
+    cloudWalletUrl,
+    cloudWalletUsernameSelector,
     waxWalletContinueButtonSelector,
     waxWalletLoginButtonSelector,
     waxWalletPasswordSelector,
@@ -77,8 +79,8 @@ export async function loginToCloudWallet(browser, user) {
     if(waxBotConfig.updateTokens === "true") {
         logger.logInfo(user.email + " - updating token");
         await cloudWalletPage.waitForSelector(accountNameSelector);
-        let accountName = await cloudWalletPage.evaluate(() => {return document.querySelector('.avatar-div-3').innerText});
-
+        await wait(2000);
+        let accountName = await cloudWalletPage.evaluate(() => {return document.querySelector('.avatar-div-container').innerText; });
         const cookies = await cloudWalletPage.cookies('https://www.mycloudwallet.com');
         const cookie = cookies.find(obj => obj.name === "session_token");
         const waxToken = cookie ? cookie.value : undefined;

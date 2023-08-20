@@ -1,6 +1,6 @@
 {
   "name": "waxbot",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Bot for WAX commands automation",
   "main": "electron_main.js",
   "dependencies": {
